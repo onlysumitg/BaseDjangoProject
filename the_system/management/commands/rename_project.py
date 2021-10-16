@@ -39,7 +39,12 @@ class Command(BaseCommand):
 
             for subfolder in subFolders:
                 if subfolder.strip() == old_project_name:
-                    self.stdout.write(self.style.WARNING(f"Need to rename folder {folderName} /{subfolder}"))
+
+                    current_path = os.path.join(folderName,subfolder)
+                    new_path = os.path.join(folderName,new_project_name)
+                    if options['commit']:
+                        os.rename(current_path,new_path)
+                        self.stdout.write(self.style.SUCESS(f"Renamed Folder from {current_path} to {new_path}"))
 
             for filename in fileNames:
 
