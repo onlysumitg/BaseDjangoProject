@@ -1,0 +1,64 @@
+{% extends "account/base.html" %}
+
+{% load i18n %}
+{% load account %}
+
+
+{% block content %}
+
+
+<div class="card p-4">
+    <div class="card-body">
+
+
+        <h1>{% trans "Confirm E-mail Address" %}</h1>
+
+        {% if confirmation %}
+
+        {% user_display confirmation.email_address.user as user_display %}
+        <p>{% blocktrans with confirmation.email_address.email as email %}Please confirm that <a
+                href="mailto:{{ email }}">{{ email }}</a> is an e-mail address for user {{ user_display }}.{%
+            endblocktrans %}</p>
+
+
+        <form method="post" action="{% url 'account_confirm_email' confirmation.key %}">
+            {% csrf_token %}
+            {{ form|crispy }}
+
+            {% if redirect_field_value %}
+            <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
+            {% endif %}
+
+            <div class="row">
+                <div class="col-12">
+                    <button class="btn btn-primary px-4" type="submit">{% trans 'Confirm' %}</button>
+                </div>
+
+            </div>
+        </form>
+        {% else %}
+
+        {% url 'account_email' as email_url %}
+
+        <p>{% blocktrans %}This e-mail confirmation link expired or is invalid. Please <a href="{{ email_url }}">issue a
+            new e-mail confirmation request</a>.{% endblocktrans %}</p>
+
+        {% endif %}
+    </div>
+</div>
+<!-- end login -->
+
+
+<div class="card text-white bg-primary py-5 d-md-down-none" style="width:44%">
+    <div class="card-body text-center">
+        <div>
+            <h2>{% blocktrans %}Already have an account? {% endblocktrans %}</h2>
+
+            <a class="btn btn-lg  btn-outline-light mt-3" href="{{ login_url }}">{% trans "Sign In" %}</a>
+
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

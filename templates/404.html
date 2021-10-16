@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+{% load i18n %}
+{% load static %}
+<html lang="en">
+  <head>
+    <base href="./">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="{{app_name}}">
+    <meta name="keyword" content="">
+    <title>CoreUI Pro Bootstrap Admin Template</title>
+    <!-- Main styles for this application-->
+    <link href="{{ STATIC_URL }}coreui/css/style.css" rel="stylesheet">
+  </head>
+  <body class="c-app flex-row align-items-center">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-6">
+          <div class="clearfix">
+            <h1 class="float-left display-3 mr-4">404</h1>
+            <h4 class="pt-3">Oops! You're lost.</h4>
+            <p class="text-muted">The page you are looking for was not found.</p>
+          </div>
+          <div class="input-prepend input-group">
+            <div class="input-group-prepend"><span class="input-group-text">
+                <svg class="c-icon">
+                  <use xlink:href="{{ STATIC_URL }}coreui/vendors/coreui/icons/svg/free.svg#cil-magnifying-glass"></use>
+                </svg></span></div>
+            <input class="form-control" id="prependedInput" size="16" type="text" placeholder="What are you looking for?"><span class="input-group-append">
+              <button class="btn btn-info" type="button">Search</button></span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- CoreUI and necessary plugins-->
+    <script src="{{ STATIC_URL }}coreui/vendors/coreui/coreui-pro/js/coreui.bundle.min.js"></script>
+    <!--[if IE]><!-->
+    <script src="{{ STATIC_URL }}coreui/vendors/coreui/icons/js/svgxuse.min.js"></script>
+    <!--<![endif]-->
+    <script>
+      document.addEventListener("DOMContentLoaded", function(event) {
+        setTimeout(function() {
+          document.body.classList.remove('c-no-layout-transition')
+        }, 2000);
+      });
+    </script>
+
+  </body>
+</html>

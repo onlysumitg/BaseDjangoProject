@@ -1,0 +1,110 @@
+{% extends "account/base.html" %}
+
+{% load i18n %}
+{% load account socialaccount %}
+
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+                <div class="card p-4">
+                    <div class="card-body">
+
+
+                        <h1>{% trans "Sign In" %}</h1>
+                        <p class="text-muted">{% trans 'Sign In to your account' %}</p>
+                        {% include 'messages.html' %}
+
+                        <div class="input-group mb-3">
+                            <ul class="list-group">
+                                {% for field, error in form.errors.items %}
+                                {% if field == '__all__' %}
+
+                                <li class="list-group-item list-group-item-danger">
+                                    {{ error | striptags }}
+                                </li>
+                                {% endif %}
+                                {% endfor %}
+                            </ul>
+                        </div>
+
+
+                        <form class="user" method="POST" action="{% url 'account_login' %}">
+                            {% csrf_token %}
+                            {% if redirect_field_value %}
+                            <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
+                            {% endif %}
+
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend"><span class="input-group-text">
+                      <svg class="c-icon">
+                        <use xlink:href="{{ STATIC_URL }}coreui/vendors/coreui/icons/svg/free.svg#cil-user"></use>
+                      </svg></span></div>
+                                <input class="form-control" name="login" required maxlength="150" id="id_login"
+                                       type="text"
+                                       placeholder="{% trans 'Username' %}">
+                            </div>
+                            <div class="input-group mb-4">
+                                <div class="input-group-prepend"><span class="input-group-text">
+                      <svg class="c-icon">
+                        <use xlink:href="{{ STATIC_URL }}coreui/vendors/coreui/icons/svg/free.svg#cil-lock-locked"></use>
+                      </svg></span></div>
+                                <input class="form-control" name="password" id="id_password" type="password" required
+                                       placeholder="{% trans 'Password' %}">
+                            </div>
+                            <!--                            <div class="form-group">-->
+                            <!--                                <div id="div_id_remember" class="form-check">-->
+                            <!--                                    <input type="checkbox" name="remember" class="checkboxinput form-check-input"-->
+                            <!--                                           id="id_remember">-->
+                            <!--                                    <label for="id_remember" class="form-check-label">-->
+                            <!--                                        {% trans 'Remember Me' %}-->
+                            <!--                                    </label>-->
+                            <!--                                </div>-->
+                            <!--                            </div>-->
+
+                            <div class="row">
+                                <div class="col-2">
+                                    <label class="c-switch c-switch-label c-switch-pill c-switch-primary ">
+                                        <input id="id_remember" class="c-switch-input" name="remember" type="checkbox"
+                                               checked=""><span
+                                            class="c-switch-slider"
+                                            data-checked="✓"
+                                            data-unchecked="✕"></span>
+
+                                    </label>
+                                </div>
+                                <div class="col-6">
+                                    {% trans 'Remember Me' %}
+                                </div>
+                            </div>
+
+
+                            <div class="row">
+                                <div class="col-6">
+                                    <button type="submit" class="btn btn-primary px-4 c-loading-button" data-coreui="loading-button" data-timeout="500" data-progress="true">{% trans "Sign In" %}</button>
+                                </div>
+
+
+
+
+                                <div class="col-6 text-right">
+                                    <a class="btn btn-link px-0" href="{% url 'account_reset_password' %}"
+                                       type="button">{% trans 'Forgot password?' %}</a>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="card text-white bg-primary py-5 d-md-down-none" style="width:44%">
+                    <div class="card-body text-center">
+                        <div>
+                            <h2>{% trans 'Sign up' %}</h2>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+                                incididunt ut labore et dolore magna aliqua.</p>
+                            <a href="{{ signup_url }}" class="btn btn-lg btn-outline-light mt-3"
+                               type="button">{% trans 'Register Now!' %}
+                            </a>
+                        </div>
+                    </div>
+                </div>
+{% endblock %}

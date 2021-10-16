@@ -1,0 +1,111 @@
+<!doctype html>
+{% load i18n %}
+{% load static %}
+<html lang="en">
+
+<head>
+    <base href="./">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <meta name="description" content="{{ app_name }}">
+    <meta name="author" content="{{app_name}}">
+    <meta name="keyword" content="Paysa, bill payment">
+    <title>{% block head_title %}{{ app_name }}{% endblock %}</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
+
+    <link href="{% static 'coreui/css/style.css' %}" rel="stylesheet">
+    <link href="{% static 'coreui/vendors/coreui/chartjs/css/coreui-chartjs.css' %}" rel="stylesheet">
+
+    {% block more-css %}
+    {% endblock more-css %}
+
+
+</head>
+
+
+<body   class="c-app c-no-layout-transition {% if request.session.uitheme == 'DARK' %} c-dark-theme {% endif %} ">
+
+
+<!-- sidebar -->
+{% block sidebar %}
+{% include 'sidebar.html' %}
+{% endblock sidebar %}
+<!-- sidebar end-->
+
+
+<!-- right tab -->
+{% include 'right_tab.html' %}
+<!-- right tab end-->
+
+<!-- main area -->
+<div class="c-wrapper">
+    <!-- topbar -->
+    {% include 'header.html' %}
+    <!-- topbar end-->
+    {% include 'messages.html' %}
+
+    <div   class="h-100">
+        {% block content %}
+        {% endblock content %}
+    </div>
+
+    {% block footer %}
+    <footer class="c-footer">
+        <div><a href="">{{app_name}}</a> © 2020.</div>
+        <div class="mfs-auto">Powered by&nbsp;<a href="http://{{powered_by}}">{{powered_by}}</a></div>
+    </footer>
+    {% endblock footer %}
+</div>
+
+
+
+<!-- main area end-->
+
+
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
+<!-- CoreUI and necessary plugins-->
+<script src="{% static 'coreui/vendors/coreui/coreui-pro/js/coreui.bundle.min.js' %}"></script>
+<!--[if IE]><!-->
+<script src="{% static 'coreui/vendors/coreui/icons/js/svgxuse.min.js' %}"></script>
+<!--<![endif]-->
+<!-- Plugins and scripts required by this view-->
+<script src="{% static 'coreui/vendors/coreui/chartjs/js/coreui-chartjs.bundle.js' %}"></script>
+<script src="{% static 'coreui/vendors/coreui/utils/js/coreui-utils.js' %}"></script>
+<!--<script src="{% static 'coreui/js/main.js' %}"></script>-->
+
+
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="https://kit.fontawesome.com/cbaefb7176.js" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js" crossorigin="anonymous"></script>
+
+
+{% block more-js %}
+{% endblock more-js %}
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function (event) {
+        setTimeout(function () {
+            document.body.classList.remove('c-no-layout-transition')
+        }, 2000);
+    });
+</script>
+
+
+
+
+{% include 'base_js.html' %}
+{% include 'right_tab_js.html' %}
+
+
+
+
+
+
+{% block more-js-after-vue %}
+{% endblock more-js-after-vue %}
+</body>
+
+
+</html>

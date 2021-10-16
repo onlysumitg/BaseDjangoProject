@@ -1,0 +1,63 @@
+<!-- https://templates.pinaxproject.com/messages/inbox-empty/?source=True -->
+
+
+{% load i18n %}
+
+<div class="c-messages" id="cmessages">
+    {% for message in messages %}
+    {% include 'pinax/messages/message.html' with message=message display_subject=display_subject %}
+
+    {% endfor %}
+</div>
+
+
+<script>
+    let messages_app = new Vue({
+        el: "#cmessages",
+        delimiters: ['[[', ']]'],
+        data: {
+            token: '',
+
+
+
+        },
+        methods: {
+            toggleStar:function (e, id){
+
+                const csrftoken = Cookies.get('csrftoken');
+
+                let config = {
+                    headers: {
+                        "X-CSRFToken": csrftoken,
+                        "Content-Type": "application/json",
+                        "Accept": "application/json"
+                    }
+                }
+                let data = {
+                    messageid: id,
+
+                }
+
+                var self = this
+                axios.post('{% url "the_messages:messages_toggle_start" %}', data, config).then(function (response) {
+                    // handle success
+                    // console.log(response);
+
+                    window.location.reload()
+
+                }).catch(function (error) {
+                    // handle error
+                    // console.log(error);
+                }).then(function () {
+                    // always executed
+                });
+                e.preventDefault()
+            },
+
+
+
+
+        }
+    })
+
+</script>

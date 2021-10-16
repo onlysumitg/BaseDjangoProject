@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% load i18n %}
+
+{% block head_title %}
+
+{% blocktranslate %}{{action}} Task{% endblocktranslate %}
+{% endblock %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+
+<div class="container-fluid">
+    <!-- LOGIN -->
+    <div class="row m-2">
+        <div class="col">
+            <div class="card">
+                <div class="card-header"><Strong>{% blocktranslate %}{{action}} Task{% endblocktranslate %}</Strong></div>
+
+                <div class="card-body">
+                    <form method="POST" action="" class="password_change">
+                        {% csrf_token %}
+                        {{ form|crispy }}
+
+                        <input type="hidden" name="next" value="{{ request.path }}">
+
+                        <div class="row">
+                            <div class="col">
+                                <button class="btn btn-primary px-4" type="submit">{% trans "Done" %}
+                                </button>
+                            </div>
+
+                        </div>
+
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block sidebar %}
+{% include 'the_todo/sidebar.html' %}
+{% endblock sidebar %}

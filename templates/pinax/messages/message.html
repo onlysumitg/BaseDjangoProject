@@ -1,0 +1,37 @@
+<!-- https://templates.pinaxproject.com/messages/inbox-empty/?source=True -->
+
+
+{% load i18n %}
+
+{% load the_messages_filters %}
+
+<a class="c-message" href="{% url 'pinax_messages:thread_detail' pk=message.thread.pk %}">
+    <div class="c-message-actions">
+        {% if message|is_stared:request %}
+        <i @click="toggleStar($event,{{message.id}})" class="fa fa-star" aria-hidden="true"></i>
+        {% else %}
+        <svg  @click="toggleStar($event,{{message.id}})" class="c-icon">
+            <use xlink:href="{{STATIC_URL}}coreui/vendors/coreui/icons/svg/free.svg#cil-star"></use>
+        </svg>
+
+        {% endif %}
+    </div>
+
+    <div class="c-message-details w-100">
+        <div class="c-message-headers">
+            <div class="c-message-headers-from"><strong>From: {{ message.sender.username|capfirst }}</strong> </div>
+
+            <div class="c-message-headers-date">
+
+                {{ message.sent_at }}
+            </div>
+            <div class="c-message-headers-subject">
+              {% if display_subject %}  {{ message.thread.subject }} {% endif %}
+            </div>
+        </div>
+        <div class="">
+            {{ message.content|urlize|linebreaks|truncatechars:140 }}
+        </div>
+
+    </div>
+</a>

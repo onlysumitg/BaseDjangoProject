@@ -1,0 +1,421 @@
+{% load i18n %}
+{% load static %}
+{% load pinax_messages_tags %}
+
+{% url 'the_user:settings' as user_setting_url %}
+<header class="c-header c-header-light c-header-fixed">
+    <button class="c-header-toggler c-class-toggler d-lg-none mfe-auto" type="button" data-target="#sidebar"
+            data-class="c-sidebar-show">
+        <svg class="c-icon c-icon-lg">
+            <use xlink:href="{{ STATIC_URL }}coreui/vendors/coreui/icons/svg/free.svg#cil-menu"></use>
+        </svg>
+    </button>
+    <a class="c-header-brand d-lg-none c-header-brand-sm-up-center" href="#">
+
+        <h5>[+] {{app_name}}</h5>
+    </a>
+    <button class="c-header-toggler c-class-toggler mfs-3 d-md-down-none" type="button" data-target="#sidebar"
+            data-class="c-sidebar-lg-show" responsive="true">
+        <svg class="c-icon c-icon-lg">
+            <use xlink:href="{{ STATIC_URL }}coreui/vendors/coreui/icons/svg/free.svg#cil-menu"></use>
+        </svg>
+    </button>
+
+    <ul class="c-header-nav d-md-down-none">
+        <li class="c-header-nav-item px-3"><a class="c-header-nav-link" href="/">{% trans "Dashboard" %} </a></li>
+
+
+        <li class="px-3">
+
+                <span class="w-100">
+                    <form class="form-inline w-100" method="get" action="">
+                        {% csrf_token %}
+                        <input class="form-control" id="input2-group2-search" type="text"
+                               name="search_value" placeholder="Search" autocomplete="search"
+                               value="{{request.search_value}}"><span
+                            class="input-group-append">
+                                    <button class="btn   btn-ghost-primary" type="submit">
+                                        <svg class="c-icon">
+                                          <use xlink:href="{{STATIC_URL}}coreui/vendors/coreui/icons/svg/free.svg#cil-search"></use>
+                                        </svg>&nbsp;
+                                    </button>
+
+                                    </span>
+                    </form>
+                    </span>
+
+        </li>
+        <!--        <form class="form-inline" method="get" action="">-->
+        <!--            {% csrf_token %}-->
+        <!--            <input required class="form-control" id="search" type="text"-->
+        <!--                   name="search" placeholder="Search" autocomplete="search"><span-->
+        <!--                class="input-group-append">-->
+        <!--                                    <button class="btn btn-ghost-primary" type="submit">-->
+        <!--                                        <svg class="c-icon">-->
+        <!--                                          <use xlink:href="{{STATIC_URL}}coreui/vendors/coreui/icons/svg/free.svg#cil-search"></use>-->
+        <!--                                        </svg>&nbsp;-->
+        <!--                                    </button>-->
+
+        <!--                                    </span>-->
+        <!--        </form>-->
+
+
+    </ul>
+    <ul class="c-header-nav mfs-auto">
+        <li class="c-header-nav-item px-3 c-d-legacy-none">
+            <button class="c-header-nav-btn" type="button" id="toggletheme"
+                    @click="toggleTheme"
+                    data-target="body"
+                    data-class="c-dark-theme"
+                    data-toggle="c-tooltip"
+                    data-placement="bottom"
+                    title="Toggle Light/Dark Mode">
+
+                <svg class="c-icon c-d-dark-none">
+                    <use xlink:href="{{ STATIC_URL }}coreui/vendors/coreui/icons/svg/free.svg#cil-moon"></use>
+                </svg>
+                <svg class="c-icon c-d-default-none">
+                    <use xlink:href="{{ STATIC_URL }}coreui/vendors/coreui/icons/svg/free.svg#cil-sun"></use>
+                </svg>
+            </button>
+
+        </li>
+    </ul>
+    <ul class="c-header-nav">
+        <li class="c-header-nav-item dropdown d-md-down-none mx-2"><a class="c-header-nav-link" data-toggle="dropdown"
+                                                                      href="#" role="button" aria-haspopup="true"
+                                                                      aria-expanded="false">
+            <svg class="c-icon">
+                <use xlink:href="{{ STATIC_URL }}coreui/vendors/coreui/icons/svg/free.svg#cil-bell"></use>
+            </svg>
+            <span class="badge badge-pill badge-danger">5</span></a>
+            <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg pt-0">
+                <div class="dropdown-header bg-light"><strong>You have 5 notifications</strong></div>
+                <a class="dropdown-item" href="#">
+                    <svg class="c-icon mfe-2 text-success">
+                        <use xlink:href="{{ STATIC_URL }}coreui/vendors/coreui/icons/svg/free.svg#cil-user-follow"></use>
+                    </svg>
+                    New user registered</a><a class="dropdown-item" href="#">
+                <svg class="c-icon mfe-2 text-danger">
+                    <use xlink:href="{{ STATIC_URL }}coreui/vendors/coreui/icons/svg/free.svg#cil-user-unfollow"></use>
+                </svg>
+                User deleted</a><a class="dropdown-item" href="#">
+                <svg class="c-icon mfe-2 text-info">
+                    <use xlink:href="{{ STATIC_URL }}coreui/vendors/coreui/icons/svg/free.svg#cil-chart"></use>
+                </svg>
+                Sales report is ready</a><a class="dropdown-item" href="#">
+                <svg class="c-icon mfe-2 text-success">
+                    <use xlink:href="{{ STATIC_URL }}coreui/vendors/coreui/icons/svg/free.svg#cil-basket"></use>
+                </svg>
+                New client</a><a class="dropdown-item" href="#">
+                <svg class="c-icon mfe-2 text-warning">
+                    <use xlink:href="{{ STATIC_URL }}coreui/vendors/coreui/icons/svg/free.svg#cil-speedometer"></use>
+                </svg>
+                Server overloaded</a>
+                <div class="dropdown-header bg-light"><strong>Server</strong></div>
+                <a class="dropdown-item d-block" href="#">
+                    <div class="text-uppercase mb-1"><small><b>CPU Usage</b></small></div>
+                    <span class="progress progress-xs">
+                  <div class="progress-bar bg-info" role="progressbar" style="width: 25%" aria-valuenow="25"
+                       aria-valuemin="0" aria-valuemax="100"></div>
+                </span><small class="text-muted">348 Processes. 1/4 Cores.</small>
+                </a><a class="dropdown-item d-block" href="#">
+                <div class="text-uppercase mb-1"><small><b>Memory Usage</b></small></div>
+                <span class="progress progress-xs">
+                  <div class="progress-bar bg-warning" role="progressbar" style="width: 70%" aria-valuenow="70"
+                       aria-valuemin="0" aria-valuemax="100"></div>
+                </span><small class="text-muted">11444GB/16384MB</small>
+            </a><a class="dropdown-item d-block" href="#">
+                <div class="text-uppercase mb-1"><small><b>SSD 1 Usage</b></small></div>
+                <span class="progress progress-xs">
+                  <div class="progress-bar bg-danger" role="progressbar" style="width: 95%" aria-valuenow="95"
+                       aria-valuemin="0" aria-valuemax="100"></div>
+                </span><small class="text-muted">243GB/256GB</small>
+            </a>
+            </div>
+        </li>
+
+
+        <li class="c-header-nav-item dropdown d-md-down-none mx-2">
+
+            <a class="c-header-nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
+               aria-expanded="false">
+                <svg class="c-icon">
+                    <use xlink:href="{{ STATIC_URL }}coreui/vendors/coreui/icons/svg/free.svg#cil-list-rich"></use>
+                </svg>
+                <!--            <span class="badge badge-pill badge-warning">15</span>-->
+
+            </a>
+            <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg pt-0">
+                <div class="dropdown-header bg-light"><strong>{% trans 'Latest activities' %}</strong></div>
+
+                {% for activity in user_activities %}
+                <a class="dropdown-item d-block" href="#">
+                    <div class="  mb-1">{{ activity.change_message }} @ {{ activity.action_time }}</div>
+
+
+                </a>
+                {% endfor %}
+
+
+                <a class="dropdown-item text-center border-top"
+                   href="{% url 'the_activity:list_user_activities' %}"><strong>
+                    {% trans 'View all activities' %}s</strong></a>
+            </div>
+        </li>
+
+        {% with user|unread_thread_count as unread_count %}
+
+        <li class="c-header-nav-item dropdown d-md-down-none mx-2">
+            <a class="c-header-nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
+               aria-expanded="false">
+                <svg class="c-icon">
+                    <use xlink:href="{{ STATIC_URL }}coreui/vendors/coreui/icons/svg/free.svg#cil-envelope-open"></use>
+                </svg>
+
+                {% if unread_count > 0 %}
+                <span class="badge badge-pill badge-info">{{unread_count}}</span>
+                {% endif %}
+
+            </a>
+
+            <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg pt-0">
+                <div class="dropdown-header bg-light"><strong>You have {{unread_count}} new messages</strong></div>
+
+                {% for thread in unread_threads %}
+
+                <a class="dropdown-item" href="{% url 'pinax_messages:thread_detail' pk=thread.pk %}">
+                    <div class="message">
+<!--                        <div class="py-3 mfe-3 float-left">-->
+<!--                            <div class="c-avatar"><img class="c-avatar-img"-->
+<!--                                                       src="{{ STATIC_URL }}coreui/assets/img/avatars/7.jpg"-->
+<!--                                                       alt="user@email.com"><span-->
+<!--                                    class="c-avatar-status bg-success"></span></div>-->
+<!--                        </div>-->
+                        <div>
+                            <small class="text-muted">{{ thread.latest_message.sender.username|capfirst }}</small>
+                            <small class="text-muted float-right mt-1">&nbsp; &nbsp; {{ thread.latest_message.sent_at|timesince }}</small>
+                        </div>
+                        <div class="font-weight-bold">
+
+                            <span class="text-danger">!</span>
+                            {{ thread.subject }}
+                        </div>
+                        <div class="small text-muted text-truncate">
+                            {{ thread.latest_message.content|truncatechars:140 }}
+                        </div>
+                    </div>
+                </a>
+                {% endfor %}
+
+
+
+
+                <a class="dropdown-item text-center border-top" href="{% url 'pinax_messages:inbox' %}"><strong>View all
+                    messages &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </strong></a>
+            </div>
+        </li>
+        {% endwith %}
+
+
+        <li class="c-header-nav-item dropdown">
+
+
+            <a class="c-header-nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
+               aria-expanded="false">
+                <svg class="c-icon">
+                    <use xlink:href="{{ STATIC_URL }}coreui/vendors/coreui/icons/svg/free.svg#cil-user"></use>
+                </svg>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right pt-0">{
+                <div class="dropdown-header bg-light py-2"><strong>Account</strong></div>
+                <a class="dropdown-item" href="#">
+                    <svg class="c-icon mfe-2">
+                        <use xlink:href="{{ STATIC_URL }}coreui/vendors/coreui/icons/svg/free.svg#cil-bell"></use>
+                    </svg>
+                    Updates<span class="badge badge-info mfs-auto">42</span></a>
+                {% with user|unread_thread_count as unread_count %}
+                <a class="dropdown-item" href="{% url 'pinax_messages:inbox' %}">
+                    <svg class="c-icon mfe-2">
+                        <use xlink:href="{{ STATIC_URL }}coreui/vendors/coreui/icons/svg/free.svg#cil-envelope-open"></use>
+                    </svg>
+                    Messages
+
+                    <span class="badge badge-success mfs-auto">{{ unread_count }}</span>
+
+                </a>
+                {% endwith %}
+
+
+                <a class="dropdown-item" href="{% url 'the_todo:list_pending_tasks' %}">
+                    <svg class="c-icon mfe-2">
+                        <use xlink:href="{{ STATIC_URL }}coreui/vendors/coreui/icons/svg/free.svg#cil-task"></use>
+                    </svg>
+                    Tasks<span class="badge badge-danger mfs-auto">{{ pending_task_count }} </span></a>
+
+
+                <a class="dropdown-item" href="#">
+                    <svg class="c-icon mfe-2">
+                        <use xlink:href="{{ STATIC_URL }}coreui/vendors/coreui/icons/svg/free.svg#cil-comment-square"></use>
+                    </svg>
+                    Comments<span class="badge badge-warning mfs-auto">42</span></a>
+
+                <div class="dropdown-header bg-light py-2">
+                    <strong>Settings</strong>
+                </div>
+
+
+                <a class="dropdown-item" href="">
+                    <svg class="c-icon mfe-2">
+                        <use xlink:href="{{ STATIC_URL }}coreui/vendors/coreui/icons/svg/free.svg#cil-user"></use>
+                    </svg>
+                    Profile</a>
+
+                <a class="dropdown-item" href="{% url 'the_user:settings' %}">
+                    <svg class="c-icon mfe-2">
+                        <use xlink:href="{{ STATIC_URL }}coreui/vendors/coreui/icons/svg/free.svg#cil-settings"></use>
+                    </svg>
+                    {% if user_setting_url == request.path %}
+                    <strong>{% trans 'Settings'%}</strong>
+                    {% else %}
+                    {% trans 'Settings'%}
+                    {% endif %}
+
+
+                </a>
+
+
+                <a class="dropdown-item" href="#">
+                    <svg class="c-icon mfe-2">
+                        <use xlink:href="{{ STATIC_URL }}coreui/vendors/coreui/icons/svg/free.svg#cil-credit-card"></use>
+                    </svg>
+                    Payments<span class="badge badge-secondary mfs-auto">42</span></a><a class="dropdown-item" href="#">
+                    <svg class="c-icon mfe-2">
+                        <use xlink:href="{{ STATIC_URL }}coreui/vendors/coreui/icons/svg/free.svg#cil-file"></use>
+                    </svg>
+                    Projects<span class="badge badge-primary mfs-auto">42</span></a>
+                <div class="dropdown-divider"></div>
+
+                <a class="dropdown-item" href="{% url 'account_change_password' %}">
+                    <svg class="c-icon mfe-2">
+                        <use xlink:href="{{ STATIC_URL }}coreui/vendors/coreui/icons/svg/free.svg#cil-lock-locked"></use>
+                    </svg>
+                    {% trans 'Change Password' %}</a>
+
+                <a class="dropdown-item" href="{% url 'account_logout' %}?next={% url 'account_login' %}">
+                    <svg class="c-icon mfe-2">
+                        <use xlink:href="{{ STATIC_URL }}coreui/vendors/coreui/icons/svg/free.svg#cil-account-logout"></use>
+                    </svg>
+                    {% trans 'Sign out' %}</a>
+                }</div>
+        </li>
+
+        <!-- open right tab -->
+        <button class="c-header-toggler c-class-toggler mfe-md-3" type="button" data-target="#aside"
+                data-class="c-sidebar-show">
+            <svg class="c-icon c-icon-lg">
+                <use xlink:href="{{ STATIC_URL }}coreui/vendors/coreui/icons/svg/free.svg#cil-applications-settings"></use>
+            </svg>
+        </button>
+        <!-- open right tab -->
+    </ul>
+    <div class="c-subheader justify-content-between px-3">
+        <!-- Breadcrumb-->
+        <ol style = "background-color:transparent"  class="breadcrumb border-0 m-0 px-0 px-md-3">
+            <!--            <li class="breadcrumb-item">Home</li>-->
+            <li class="breadcrumb-item"><a  >{{ user.username|capfirst }}</a></li>
+            <!--            <li class="breadcrumb-item active">Dashboard</li>-->
+            <!-- Breadcrumb Menu-->
+        </ol>
+        <div class="c-subheader-nav d-md-down-none mfe-2"><a class="c-subheader-nav-link" href="#">
+            <svg class="c-icon">
+                <use xlink:href="{{ STATIC_URL }}coreui/vendors/coreui/icons/svg/free.svg#cil-speech"></use>
+            </svg>
+        </a>
+
+
+            <a class="c-subheader-nav-link" href="/">
+                <svg class="c-icon">
+                    <use xlink:href="{{ STATIC_URL }}coreui/vendors/coreui/icons/svg/free.svg#cil-graph"></use>
+                </svg> &nbsp;Dashboard</a>
+
+            <a class="c-subheader-nav-link" href="{% url 'the_user:settings' %}">
+                <svg class="c-icon">
+                    <use xlink:href="{{ STATIC_URL }}coreui/vendors/coreui/icons/svg/free.svg#cil-settings"></use>
+                </svg>
+
+                {% if user_setting_url == request.path %}
+                <strong> &nbsp;{% trans 'Settings'%}</strong>
+                {% else %}
+                &nbsp;{% trans 'Settings'%}
+                {% endif %}
+
+
+            </a>
+
+            <a class="c-subheader-nav-link" href="{% url 'account_logout' %}?next={% url 'account_login' %}">
+                <svg class="c-icon">
+                    <use xlink:href="{{ STATIC_URL }}coreui/vendors/coreui/icons/svg/free.svg#cil-account-logout"></use>
+                </svg> &nbsp;{% trans 'Sign out' %}</a>
+
+        </div>
+
+    </div>
+</header>
+
+
+<script>
+    //todo fix this vue
+
+    let app_toggletheme= new Vue({
+        el: "#toggletheme",
+        delimiters: ['[[', ']]'],
+        data: {
+            token: '',
+            verified: false,
+            notverified: false,
+
+
+        },
+        methods: {
+            toggleTheme: function (e) {
+                let elementClasses = document.body.classList
+                elementClasses.toggle("c-dark-theme")
+
+                let theme = "LIGHT"
+                if (elementClasses.contains("c-dark-theme")) {
+                    theme = "DARK"
+                }
+
+
+                const csrftoken = Cookies.get('csrftoken');
+
+                let config = {
+                    headers: {
+                        "X-CSRFToken": csrftoken,
+                        "Content-Type": "application/json",
+                        "Accept": "application/json"
+                    }
+                }
+                let data = {
+                    theme: theme,
+
+                }
+
+                var self = this
+                axios.post('{% url "the_system:toggle_theme" %}', data, config).then(function (response) {
+                    // handle success
+                    // console.log(response);
+
+                    // window.location.reload()
+
+                }).catch(function (error) {
+                    // handle error
+                    // console.log(error);
+                }).then(function () {
+                    // always executed
+                });
+            }
+        }
+    });
+</script>

@@ -1,0 +1,24 @@
+{% load i18n %}
+<footer class="c-footer">
+    <div class="row w-100">
+
+        <div class="col-9">
+                                <span class="w-100">
+                    <form class="form-inline w-100" @submit="processaddtask" action="">
+                            {% csrf_token %}
+                            <input class="form-control w-100" id="input2-group2" type="text"
+                                   name="search_value" placeholder="{% trans 'Add task and press enter' %}"
+                                   autocomplete="search"
+                                   v-model="task_text"
+                                   value="{{request.search_value}}">
+                        </form>
+                    </span>
+        </div>
+        <div class="col-3">
+            <div class="mfs-auto"><a href="">{{app_name}}</a> © 2020. | Powered by&nbsp;<a href="http://{{powered_by}}">{{powered_by}}</a>
+            </div>
+
+        </div>
+    </div>
+
+</footer>

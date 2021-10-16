@@ -1,0 +1,49 @@
+<!-- https://templates.pinaxproject.com/messages/inbox-empty/?source=True -->
+
+{% extends "pinax/messages/base.html" %}
+
+
+{% load i18n %}
+{% load pinax_messages_tags %}
+
+{% block head_title %}Messages{% endblock %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<div class="pinax-messages-thread-detail-container">
+
+
+    <div class="container-fluid">
+        <div class="row m-2">
+            <div class="col">
+                <div class="card">
+                    <div class="card-header"><Strong> {% trans 'Stared messages' %} </Strong></div>
+                    <div class="card-body">
+
+
+                        <div class="  c-email-app">
+                            <div class="card-body">
+                                {% include 'pinax/messages/messages.html' with messages=stared_messages display_subject=True %}
+
+
+                            </div>
+                        </div>
+
+                        {% include "pagination.html" with paginator=stared_messages %}
+
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+</div>
+{% endblock %}
+

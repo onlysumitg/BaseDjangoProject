@@ -1,0 +1,77 @@
+{% load i18n %}
+{% load static %}
+
+<div class="c-sidebar c-sidebar-dark c-sidebar-fixed c-sidebar-lg-show" id="sidebar">
+    <div class="c-sidebar-brand d-md-down-none">
+        <div class="c-sidebar-brand-full">
+            <h5>[+] {{app_name}}</h5>
+        </div>
+
+        <div class="c-sidebar-brand-minimized">
+            <h5>[+]</h5>
+        </div>
+<!--        <svg class="c-sidebar-brand-full" width="118" height="46" alt="CoreUI Logo">-->
+<!--            <use xlink:href="{{ STATIC_URL }}coreui/assets/brand/coreui-pro.svg#full"></use>-->
+<!--        </svg>-->
+<!--        <svg class="c-sidebar-brand-minimized" width="46" height="46" alt="CoreUI Logo">-->
+<!--            <use xlink:href="{{ STATIC_URL }}coreui/assets/brand/coreui-pro.svg#signet"></use>-->
+<!--        </svg>-->
+    </div>
+    <ul class="c-sidebar-nav">
+        <li class="c-sidebar-nav-item"><a class="c-sidebar-nav-link" href="/">
+            <svg class="c-sidebar-nav-icon">
+                <use xlink:href="{{ STATIC_URL }}coreui/vendors/coreui/icons/svg/free.svg#cil-speedometer"></use>
+            </svg> {% trans "Dashboard" %}</a></li>
+
+        {% block sidebarcontent %}
+     <!-- Billing profiles ------------------------------------------------------------------------>
+
+
+
+        <!-- Billing profiles end------------------------------------------------------------------------>
+
+
+<!--        <li class="c-sidebar-nav-divider"></li>-->
+        <li class="c-sidebar-nav-title">{% trans 'Mail box' %}</li>
+
+        <li class="c-sidebar-nav-item"><a class="c-sidebar-nav-link" href="{% url 'pinax_messages:inbox' %}">
+            <svg class="c-sidebar-nav-icon">
+                <use xlink:href="{{STATIC_URL}}coreui/vendors/coreui/icons/svg/free.svg#cil-inbox"></use>
+            </svg>
+            Inbox
+            {% with unread_count=unread_threads.count %}
+            {% if unread_count > 0 %}
+            <span class="badge badge-danger">{{unread_count}}</span>
+            {% endif %}{% endwith %}
+        </a></li>
+
+        <li class="c-sidebar-nav-item"><a class="c-sidebar-nav-link"
+                                          href="{% url 'pinax_messages:message_create' %}">
+            <svg class="c-sidebar-nav-icon">
+                <use xlink:href="{{STATIC_URL}}coreui/vendors/coreui/icons/svg/free.svg#cil-pencil"></use>
+            </svg>
+            New email
+        </a>
+        </li>
+
+
+        <li class="c-sidebar-nav-title">{% trans 'Tasks' %}</li>
+
+        <li class="c-sidebar-nav-item"><a class="c-sidebar-nav-link" href="{% url 'the_todo:list_pending_tasks' %}">
+            <svg class="c-sidebar-nav-icon">
+                <use xlink:href="{{STATIC_URL}}coreui/vendors/coreui/icons/svg/free.svg#cil-list"></use>
+            </svg>
+            {% trans 'Pending Tasks'  %}
+            {% if pending_task_count > 0 %}
+            <span class="badge badge-danger">{{pending_task_count}}</span>
+            {% endif %}
+        </a></li>
+
+
+
+
+        {% endblock sidebarcontent %}
+
+    </ul>
+    <button responsive="true" class="c-sidebar-minimizer c-class-toggler" type="button" data-target="_parent" data-class="c-sidebar-unfoldable"></button>
+</div>

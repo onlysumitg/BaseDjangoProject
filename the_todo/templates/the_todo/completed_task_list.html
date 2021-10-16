@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+
+{% load i18n %}
+
+{% block head_title %}{% trans "Tasks" %}{% endblock %}
+
+{% block content %}
+{% load crispy_forms_tags %}
+
+
+<div class="container-fluid">
+    <!-- LOGIN -->
+    <div class="row m-2">
+        <div class="col">
+            <div class="card">
+                <div class="card-header">
+                    <div class="row">
+                        <div class="col-3">
+                    <Strong>{% trans "Tasks" %}</Strong>
+                        </div>
+                        <div class="col-9">
+                    <form class="float-right form-inline" action="{% url 'the_todo:create_task' %}" method="get">
+                        <input type="hidden" name="next" value="{{ request.path }}">
+
+                        <button type="submit" class="btn btn-primary float-right">{% trans '+ Add new' %}</button>
+                    </form>
+                    </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <table class="table table-responsive-sm table-hover table-outline mb-0 w-100 d-block d-md-table">
+
+                        <thead class="thead-light">
+                        <tr>
+                            <th class="text">{% trans "Task" %}</th>
+                            <th class="text-center">{% trans "Completed on" %}</th>
+                            <th class="text-center">{% trans "Completed?" %}</th>
+                            <th>{% trans "Option" %}</th>
+
+                        </tr>
+                        </thead>
+                        <tbody>
+                            {% for task in tasks %}
+                                <tr>
+                                    <td class="text"> {{ task.task }}   </td>
+                                    <td class="text-center">{{ task.completed_on }} </td>
+                                    <td class="text-center">
+
+                                        {% include "the_todo/toggle_status.html" with task=task %}
+
+
+                                    </td>
+                                    <td  >
+
+                                        <form class="form-inline" action="{% url 'the_todo:edit_task' pk=task.pk %}" method="get">
+                                            <input type="hidden" name="next" value="{{ request.path }}">
+
+                                            <button type="submit" class="btn btn-primary">{% trans 'Edit' %}</button>
+                                        </form>
+                                    </td>
+                                </tr>
+
+                            {% empty %}
+                            <tr>
+                            <tr>
+                                <td class="text-center" colspan="4" > {% trans 'No Record Found' %} </td>
+
+                            </tr>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                    {% include "pagination.html" with paginator=tasks %}
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+{% endblock %}
+
+
+
+{% block sidebar %}
+{% include 'the_todo/sidebar.html' %}
+{% endblock sidebar%}

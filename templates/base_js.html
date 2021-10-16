@@ -1,0 +1,60 @@
+
+<script>
+    //todo fix this vue
+
+    let mainapp_vue = new Vue({
+        el: "#mainareabody",
+        delimiters: ['[[', ']]'],
+        data: {
+            task_text:""
+
+
+        },
+        methods: {
+
+            processaddtask: function (e) {
+                 const csrftoken = Cookies.get('csrftoken');
+
+                let config = {
+                    headers: {
+                        "X-CSRFToken": csrftoken,
+                        "Content-Type": "application/json",
+                        "Accept": "application/json"
+                    }
+                }
+                let data = { task: this.task_text,}
+
+                var self = this
+                axios.post('{% url "the_todo:add_task" %}', data, config).then(function (response) {
+                    window.location.reload()  })
+                    .catch(function (error) {})
+                    .then(function () { });
+
+                e.preventDefault()
+            },
+
+
+            toggleStatus:function (e, id){
+
+                const csrftoken = Cookies.get('csrftoken');
+
+                let config = {
+                    headers: {
+                        "X-CSRFToken": csrftoken,
+                        "Content-Type": "application/json",
+                        "Accept": "application/json"
+                    }
+                }
+                let data = { taskid: id,}
+
+                var self = this
+                axios.post('{% url "the_todo:change_status_task" %}', data, config).then(function (response) {
+                   window.location.reload()  })
+                    .catch(function (error) {})
+                    .then(function () { });
+            },
+
+        }
+    });
+
+</script>

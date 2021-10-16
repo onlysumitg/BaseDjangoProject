@@ -1,0 +1,144 @@
+<!-- https://templates.pinaxproject.com/messages/inbox-empty/?source=True -->
+
+{% extends "pinax/messages/base.html" %}
+
+{% load i18n %}
+{% load pinax_messages_tags %}
+
+{% block head_title %}Messages{% endblock %}
+
+
+{% block content %}
+
+<div class="pinax-messages-create-container">
+    <main class="c-main">
+        <div class="container-fluid">
+            <div class="card c-email-app">
+                <div class="card-body">
+                    <form   action="{% url 'pinax_messages:message_create' %}" method="post">
+                        {% csrf_token %}
+                        <div class="form-row mb-3">
+                            <label class="col-2 col-sm-1 col-form-label" for="to">To:</label>
+                            <div class="col-10 col-sm-11">
+                                <input class="form-control" required id="id_to_user"  name="to_user" type="text" placeholder="User" value="Admin" readonly>
+                            </div>
+                        </div>
+                        <div class="form-row mb-3">
+                            <label class="col-2 col-sm-1 col-form-label" for="cc">Subject:</label>
+                            <div class="col-10 col-sm-11">
+                                <input name="subject" required class="form-control" id="id_subject" type="subject" placeholder="Required">
+                            </div>
+                        </div>
+<!--                        <div class="form-row mb-3">-->
+<!--                            <label class="col-2 col-sm-1 col-form-label" for="bcc">BCC:</label>-->
+<!--                            <div class="col-10 col-sm-11">-->
+<!--                                <input class="form-control" id="bcc" type="email" placeholder="Type email">-->
+<!--                            </div>-->
+<!--                        </div>-->
+                    </form>
+                    <div class="row">
+                        <div class="col-sm-11 mfs-auto">
+<!--                            <div class="toolbar" role="toolbar">-->
+<!--                                <div class="btn-group">-->
+<!--                                    <button class="btn btn-light" type="button">-->
+<!--                                        <svg class="c-icon">-->
+<!--                                            <use xlink:href="{{STATIC_URL}}coreui/vendors/coreui/icons/svg/free.svg#cil-bold"></use>-->
+<!--                                        </svg>-->
+<!--                                    </button>-->
+<!--                                    <button class="btn btn-light" type="button">-->
+<!--                                        <svg class="c-icon">-->
+<!--                                            <use xlink:href="{{STATIC_URL}}coreui/vendors/coreui/icons/svg/free.svg#cil-italic"></use>-->
+<!--                                        </svg>-->
+<!--                                    </button>-->
+<!--                                    <button class="btn btn-light" type="button">-->
+<!--                                        <svg class="c-icon">-->
+<!--                                            <use xlink:href="{{STATIC_URL}}coreui/vendors/coreui/icons/svg/free.svg#cil-underline"></use>-->
+<!--                                        </svg>-->
+<!--                                    </button>-->
+<!--                                </div>-->
+<!--                                <div class="btn-group">-->
+<!--                                    <button class="btn btn-light" type="button">-->
+<!--                                        <svg class="c-icon">-->
+<!--                                            <use xlink:href="{{STATIC_URL}}coreui/vendors/coreui/icons/svg/free.svg#cil-align-left"></use>-->
+<!--                                        </svg>-->
+<!--                                    </button>-->
+<!--                                    <button class="btn btn-light" type="button">-->
+<!--                                        <svg class="c-icon">-->
+<!--                                            <use xlink:href="{{STATIC_URL}}coreui/vendors/coreui/icons/svg/free.svg#cil-align-right"></use>-->
+<!--                                        </svg>-->
+<!--                                    </button>-->
+<!--                                    <button class="btn btn-light" type="button">-->
+<!--                                        <svg class="c-icon">-->
+<!--                                            <use xlink:href="{{STATIC_URL}}coreui/vendors/coreui/icons/svg/free.svg#cil-align-center"></use>-->
+<!--                                        </svg>-->
+<!--                                    </button>-->
+<!--                                    <button class="btn btn-light" type="button">-->
+<!--                                        <svg class="c-icon">-->
+<!--                                            <use xlink:href="{{STATIC_URL}}coreui/vendors/coreui/icons/svg/free.svg#cil-justify-center"></use>-->
+<!--                                        </svg>-->
+<!--                                    </button>-->
+<!--                                </div>-->
+<!--                                <div class="btn-group">-->
+<!--                                    <button class="btn btn-light" type="button">-->
+<!--                                        <svg class="c-icon">-->
+<!--                                            <use xlink:href="{{STATIC_URL}}coreui/vendors/coreui/icons/svg/free.svg#cil-indent-increase"></use>-->
+<!--                                        </svg>-->
+<!--                                    </button>-->
+<!--                                    <button class="btn btn-light" type="button">-->
+<!--                                        <svg class="c-icon">-->
+<!--                                            <use xlink:href="{{STATIC_URL}}coreui/vendors/coreui/icons/svg/free.svg#cil-indent-decrease"></use>-->
+<!--                                        </svg>-->
+<!--                                    </button>-->
+<!--                                </div>-->
+<!--                                <div class="btn-group">-->
+<!--                                    <button class="btn btn-light" type="button">-->
+<!--                                        <svg class="c-icon">-->
+<!--                                            <use xlink:href="{{STATIC_URL}}coreui/vendors/coreui/icons/svg/free.svg#cil-list"></use>-->
+<!--                                        </svg>-->
+<!--                                    </button>-->
+<!--                                    <button class="btn btn-light" type="button">-->
+<!--                                        <svg class="c-icon">-->
+<!--                                            <use xlink:href="{{STATIC_URL}}coreui/vendors/coreui/icons/svg/free.svg#cil-list-numbered"></use>-->
+<!--                                        </svg>-->
+<!--                                    </button>-->
+<!--                                </div>-->
+<!--                                <button class="btn btn-light" type="button">-->
+<!--                                    <svg class="c-icon">-->
+<!--                                        <use xlink:href="{{STATIC_URL}}coreui/vendors/coreui/icons/svg/free.svg#cil-trash"></use>-->
+<!--                                    </svg>-->
+<!--                                </button>-->
+<!--                                <button class="btn btn-light" type="button">-->
+<!--                                    <svg class="c-icon">-->
+<!--                                        <use xlink:href="{{STATIC_URL}}coreui/vendors/coreui/icons/svg/free.svg#cil-paperclip"></use>-->
+<!--                                    </svg>-->
+<!--                                </button>-->
+<!--                                <div class="btn-group">-->
+<!--                                    <button class="btn btn-light dropdown-toggle" type="button" data-toggle="dropdown">-->
+<!--                                        <svg class="c-icon">-->
+<!--                                            <use xlink:href="{{STATIC_URL}}coreui/vendors/coreui/icons/svg/free.svg#cil-tags"></use>-->
+<!--                                        </svg><span class="caret"></span>-->
+<!--                                    </button>-->
+<!--                                    <div class="dropdown-menu"><a class="dropdown-item" href="#">add label<span class="badge badge-danger"> Home</span></a><a class="dropdown-item" href="#">add label<span class="badge badge-info"> Job</span></a><a class="dropdown-item" href="#">add label<span class="badge badge-success"> Clients</span></a><a class="dropdown-item" href="#">add label<span class="badge badge-warning"> News</span></a></div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+                            <div class="form-group mt-4">
+                                <textarea class="form-control" id="message" name="content" rows="12" placeholder="Type your message here"></textarea>
+                            </div>
+                            <div class="form-group">
+
+<!--                                <button class="btn btn-light" type="submit">Draft</button>-->
+                                <a href="{% url 'pinax_messages:inbox' %}" class="cancel text-danger"type="submit">Discard</a>&nbsp; &nbsp;
+                                <button class="btn btn-primary" type="submit">Send</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+
+
+</div>
+{% endblock %}
+

@@ -1,0 +1,56 @@
+{% extends "sidebar.html" %}
+
+{% block sidebarcontent %}
+<ul class="c-sidebar-nav">
+    <li class="c-sidebar-nav-divider"></li>
+
+
+    <li class="c-sidebar-nav-item"><a class="c-sidebar-nav-link" href="{% url 'pinax_messages:inbox' %}">
+        <svg class="c-sidebar-nav-icon">
+            <use xlink:href="{{STATIC_URL}}coreui/vendors/coreui/icons/svg/free.svg#cil-inbox"></use>
+        </svg>
+        Inbox
+        {% with unread_count=unread_threads.count %}
+        {% if unread_count > 0 %}
+        <span class="badge badge-danger">{{unread_count}}</span>
+    {% endif %}{% endwith %}
+    </a></li>
+
+    <li class="c-sidebar-nav-item"><a class="c-sidebar-nav-link" href="{% url 'the_messages:stared_messages' %}">
+        <svg class="c-sidebar-nav-icon">
+            <use xlink:href="{{STATIC_URL}}coreui/vendors/coreui/icons/svg/free.svg#cil-star"></use>
+        </svg>
+        Stared</a></li>
+
+
+    <li class="c-sidebar-nav-item"><a class="c-sidebar-nav-link" href="{% url 'the_messages:sent_messages' %}">
+        <svg class="c-sidebar-nav-icon">
+            <use xlink:href="{{STATIC_URL}}coreui/vendors/coreui/icons/svg/free.svg#cil-paper-plane"></use>
+        </svg>
+        Sent</a></li>
+
+    <li class="c-sidebar-nav-item"><a class="c-sidebar-nav-link c-sidebar-nav-link-success"
+                                      href="{% url 'pinax_messages:message_create' %}">
+        <svg class="c-sidebar-nav-icon">
+            <use xlink:href="{{STATIC_URL}}coreui/vendors/coreui/icons/svg/free.svg#cil-pencil"></use>
+        </svg>
+        New email
+    </a>
+    </li>
+<!--    <li class="c-sidebar-nav-item"><a class="c-sidebar-nav-link" href="#">-->
+<!--        <svg class="c-sidebar-nav-icon">-->
+<!--            <use xlink:href="{{STATIC_URL}}coreui/vendors/coreui/icons/svg/free.svg#cil-trash"></use>-->
+<!--        </svg>-->
+<!--        Trash</a></li>-->
+
+
+<!--    <li class="c-sidebar-nav-item"><a class="c-sidebar-nav-link" href="#">-->
+<!--        <svg class="c-sidebar-nav-icon">-->
+<!--            <use xlink:href="{{STATIC_URL}}coreui/vendors/coreui/icons/svg/free.svg#cil-bookmark"></use>-->
+<!--        </svg>-->
+<!--        Important<span class="badge badge-info">25</span></a></li>-->
+
+
+
+</ul>
+{% endblock sidebarcontent %}

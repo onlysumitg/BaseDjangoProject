@@ -1,0 +1,12 @@
+https://simpleisbetterthancomplex.com/tutorial/2016/07/26/how-to-reset-migrations.html
+
+Step1: Go through each of your projects apps migration folder and remove everything inside, except the __init__.py file.
+     For linux use
+     find . -path "*/migrations/*.py" -not -name "__init__.py" -delete
+     find . -path "*/migrations/*.pyc"  -delete
+
+Step2. Drop the current database, or delete the db.sqlite3 if it is your case.
+
+
+python manage.py makemigrations
+python manage.py migrate

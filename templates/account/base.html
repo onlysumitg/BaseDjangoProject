@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+{% load i18n %}
+
+{% load static %}
+
+
+<html lang="en">
+<head>
+    <base href="./">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <meta name="description" content="Paysa.plus">
+    <meta name="author" content="{{app_name}}">
+    <meta name="keyword" content="Bootstrap,Admin,Template,Open,Source,jQuery,CSS,HTML,RWD,Dashboard">
+    <title>{% block head_title %}{{ app_name }}{% endblock %}</title>
+    <!-- Main styles for this application-->
+    <!--    <link href="css/style.css" rel="stylesheet">-->
+    <link rel="stylesheet" href="{% static 'coreui/css/style.css' %}" type="text/css" crossorigin="anonymous">
+
+</head>
+<body class="c-app flex-row align-items-center">
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+
+
+            <h2> {{ app_name }}</h2>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+
+            <div class="card-group">
+
+                {% block content %}
+                {% endblock content %}
+
+
+            </div>
+        </div>
+
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <footer class="c-footer">
+                <div><a href="">{{app_name}}</a> © 2020.</div>
+                <div class="mfs-auto">Powered by&nbsp;<a href="https://{{powered_by}}">{{powered_by}}</a></div>
+            </footer>
+        </div>
+    </div>
+</div>
+<!-- CoreUI and necessary plugins-->
+<script src="{% static 'coreui/vendors/coreui/coreui-pro/js/coreui.bundle.min.js' %}"></script>
+<!--[if IE]><!-->
+<script src="{% static 'coreui/vendors/coreui/icons/js/svgxuse.min.js' %}"></script>
+<!--<![endif]-->
+<script>
+    document.addEventListener("DOMContentLoaded", function (event) {
+        setTimeout(function () {
+            document.body.classList.remove('c-no-layout-transition')
+        }, 2000);
+    });
+</script>
+
+</body>
+</html>

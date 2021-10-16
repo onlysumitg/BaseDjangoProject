@@ -1,0 +1,35 @@
+{% extends "sidebar.html" %}
+{% load i18n %}
+
+{% block sidebarcontent %}
+<ul class="c-sidebar-nav">
+    <li class="c-sidebar-nav-divider"></li>
+
+    <li class="c-sidebar-nav-title">{% trans 'Tasks' %}</li>
+
+    <li class="c-sidebar-nav-item"><a class="c-sidebar-nav-link" href="{% url 'the_todo:list_pending_tasks' %}">
+        <svg class="c-sidebar-nav-icon">
+            <use xlink:href="{{STATIC_URL}}coreui/vendors/coreui/icons/svg/free.svg#cil-list"></use>
+        </svg>
+        {% trans 'Pending Tasks'  %}
+        {% if pending_task_count > 0 %}
+        <span class="badge badge-danger">{{pending_task_count}}</span>
+    {% endif %}
+    </a></li>
+
+    <li class="c-sidebar-nav-item"><a class="c-sidebar-nav-link" href="{% url 'the_todo:list_completed_tasks' %}">
+        <svg class="c-sidebar-nav-icon">
+            <use xlink:href="{{STATIC_URL}}coreui/vendors/coreui/icons/svg/free.svg#cil-task"></use>
+        </svg>
+        {% trans 'Completed Tasks' %}</a>
+    </li>
+
+
+
+
+
+
+
+
+</ul>
+{% endblock sidebarcontent %}

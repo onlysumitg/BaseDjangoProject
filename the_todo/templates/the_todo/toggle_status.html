@@ -1,0 +1,5 @@
+{% load i18n %}
+
+<label class="c-switch c-switch-label c-switch-pill c-switch-success">
+    <input class="c-switch-input" v-on:change="toggleStatus($event,{{ task.pk }})" type="checkbox"  {% if task.completed  %} checked {% endif %} ><span class="c-switch-slider" data-checked="✓" data-unchecked="✕"></span>
+</label>
