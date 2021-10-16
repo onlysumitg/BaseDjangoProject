@@ -4,6 +4,18 @@
 
 - Clone this project
 
+- delete git folder 
+  - rm -rf .git
+  - or manualy
+    
+- git init
+
+- git commit -m "First commit"
+
+- create repo on github
+
+- git remote add origin "giturl"
+
 - pipenv install
 
 - python manage.py renameproject new_name //todo

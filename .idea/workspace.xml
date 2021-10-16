@@ -1,13 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7db40a2d-4691-43de-acda-844b3930bc45" name="Default Changelist" comment="created rename_project.py">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BaseDjangoProject/asgi.py" beforeDir="false" afterPath="$PROJECT_DIR$/BaseDjangoProject/asgi.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BaseDjangoProject/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/BaseDjangoProject/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BaseDjangoProject/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/BaseDjangoProject/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BaseDjangoProject/wsgi.py" beforeDir="false" afterPath="$PROJECT_DIR$/BaseDjangoProject/wsgi.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manage.py" beforeDir="false" afterPath="$PROJECT_DIR$/manage.py" afterDir="false" />
+    <list default="true" id="7db40a2d-4691-43de-acda-844b3930bc45" name="Default Changelist" comment="Restored project name">
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -127,7 +122,14 @@
       <option name="project" value="LOCAL" />
       <updated>1634406241957</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Restored project name">
+      <created>1634406567029</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1634406567029</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -146,7 +148,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="created rename_project.py" />
-    <option name="LAST_COMMIT_MESSAGE" value="created rename_project.py" />
+    <MESSAGE value="Restored project name" />
+    <option name="LAST_COMMIT_MESSAGE" value="Restored project name" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
