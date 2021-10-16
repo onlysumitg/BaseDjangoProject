@@ -1,0 +1,15 @@
+https://docs.python.org/3/library/argparse.html
+
+https://docs.python.org/3/library/argparse.html#nargs
+
+ nargs='?'  > optional id  the value from default will be produced
+
+class Command(BaseCommand):
+    help = 'Rename BaseDjangoProject to your new project'
+
+    def add_arguments(self, parser):
+        parser.add_argument('new_project_name',   type=str)
+        parser.add_argument('old_project_name',   type=str , nargs='?', default='BaseDjangoProject')
+
+
+for colors in std out > https://docs.djangoproject.com/en/3.2/ref/django-admin/#syntax-coloring
