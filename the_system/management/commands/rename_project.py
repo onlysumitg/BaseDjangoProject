@@ -23,6 +23,7 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         new_project_name = options.get('new_project_name', None)
         old_project_name = options.get('old_project_name', 'BaseDjangoProject')
+        folder_to_rename = []
         if not new_project_name:
             raise CommandError('Parameter new_project_name required.')
 
@@ -42,9 +43,8 @@ class Command(BaseCommand):
 
                     current_path = os.path.join(folderName,subfolder)
                     new_path = os.path.join(folderName,new_project_name)
-                    if options['commit']:
-                        os.rename(current_path,new_path)
-                        self.stdout.write(self.style.SUCESS(f"Renamed Folder from {current_path} to {new_path}"))
+                    folder_to_rename.append((current_path,new_path))
+
 
             for filename in fileNames:
 
@@ -59,16 +59,22 @@ class Command(BaseCommand):
                     if options['commit']:
                         self.rename_project_in_file_content(full_path,old_project_name,new_project_name)
 
+        if folder_to_rename:
+            for current, new in folder_to_rename:
+                if options['commit']:
+                    os.rename(current,new)
+                self.stdout.write(self.style.SUCCESS(f"Renamed Folder from {current} to {new}"))
+
 
     def has_old_project_name(self, file_name, old_project_name):
         # Read in the file
         with open(file_name, 'r') as file :
-                try:
-                    for line in file.readlines():
-                        if old_project_name in line:
-                            return True
-                except Exception as e:
-                    pass
+            try:
+                for line in file.readlines():
+                    if old_project_name in line:
+                        return True
+            except Exception as e:
+                pass
 
 
     def rename_project_in_file_content(self, file_name, old_project_name,new_project_name):

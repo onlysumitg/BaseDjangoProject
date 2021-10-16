@@ -3,6 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="7db40a2d-4691-43de-acda-844b3930bc45" name="Default Changelist" comment="created rename_project.py">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BaseDjangoProject/.env.sample" beforeDir="false" afterPath="$PROJECT_DIR$/BaseDjangoProject/.env.sample" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BaseDjangoProject/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/BaseDjangoProject/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/the_system/management/commands/rename_project.py" beforeDir="false" afterPath="$PROJECT_DIR$/the_system/management/commands/rename_project.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -23,7 +25,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="test_branch_not_for_code" />
+        <entry key="$PROJECT_DIR$" value="test_branch" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -46,11 +48,7 @@
                 <list>
                   <RecentBranch>
                     <option name="branchName" value="main" />
-                    <option name="lastUsedInstant" value="1634404961" />
-                  </RecentBranch>
-                  <RecentBranch>
-                    <option name="branchName" value="test_branch_not_for_code" />
-                    <option name="lastUsedInstant" value="1634404865" />
+                    <option name="lastUsedInstant" value="1634405879" />
                   </RecentBranch>
                 </list>
               </option>
