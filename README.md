@@ -4,10 +4,10 @@
 
 - Clone this project
 
-- delete git folder 
+- delete git folder
   - rm -rf .git
   - or manualy
-    
+
 - git init
 
 - git commit -m "First commit"
@@ -18,7 +18,10 @@
 
 - pipenv install
 
-- python manage.py renameproject new_name //todo
+- python manage.py rename_project NewProject
+  - use  --commit option to make the final change
+
+- Have to rename the Top level folder manully.
 
 - python manage.py makemigrations
 - python manage.py migrate
