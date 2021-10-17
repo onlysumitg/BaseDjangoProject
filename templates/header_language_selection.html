@@ -1,0 +1,39 @@
+{% load i18n %}
+{% load static %}
+
+{% load object_type %}
+<li class="c-header-nav-item dropdown d-md-down-none mx-2">
+    {%  get_current_language as LANGUAGE_CODE %}
+
+    {% get_language_info for  LANGUAGE_CODE as current_language %}
+
+    {% get_available_languages as LANGUAGES %}
+
+
+
+    {% get_language_info_list for  LANGUAGES as languages %}
+
+
+
+
+    <a class="c-header-nav-link" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <svg class="c-icon">
+            <use xlink:href="{{ STATIC_URL }}coreui/vendors/coreui/icons/svg/free.svg#cil-language"></use>
+        </svg>
+        <span class="mr-2 d-none d-lg-inline "> &nbsp;{{ current_language.name_local }}</span>
+    </a>
+
+    <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+        {% for language in languages %}
+        <form id="my_form_{{ language.code }}" action="{% url 'set_language' %}" method="post">
+            {% csrf_token %}
+
+            <button class="dropdown-item"  type="submit">{{ language.name_local }} ({{ language.code }})</button>
+            <input name="language" type="hidden" value="{{ language.code }}">
+            <input type="hidden" name="next" value="{{ request|get_current_url_without_lang:current_language.code }}">
+        </form>
+
+
+        {% endfor %}
+    </div>
+</li>

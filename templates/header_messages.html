@@ -1,0 +1,56 @@
+{% load i18n %}
+
+{% load pinax_messages_tags %}
+
+{% with user|unread_thread_count as unread_count %}
+
+<li class="c-header-nav-item dropdown d-md-down-none mx-2">
+    <a class="c-header-nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
+       aria-expanded="false">
+        <svg class="c-icon">
+            <use xlink:href="{{ STATIC_URL }}coreui/vendors/coreui/icons/svg/free.svg#cil-envelope-open"></use>
+        </svg>
+
+        {% if unread_count > 0 %}
+        <span class="badge badge-pill badge-info">{{unread_count}}</span>
+        {% endif %}
+
+    </a>
+
+    <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg pt-0">
+        <div class="dropdown-header bg-light"><strong>You have {{unread_count}} new messages</strong></div>
+
+        {% for thread in unread_threads %}
+
+        <a class="dropdown-item" href="{% url 'pinax_messages:thread_detail' pk=thread.pk %}">
+            <div class="message">
+                <!--                        <div class="py-3 mfe-3 float-left">-->
+                <!--                            <div class="c-avatar"><img class="c-avatar-img"-->
+                <!--                                                       src="{{ STATIC_URL }}coreui/assets/img/avatars/7.jpg"-->
+                <!--                                                       alt="user@email.com"><span-->
+                <!--                                    class="c-avatar-status bg-success"></span></div>-->
+                <!--                        </div>-->
+                <div>
+                    <small class="text-muted">{{ thread.latest_message.sender.username|capfirst }}</small>
+                    <small class="text-muted float-right mt-1">&nbsp; &nbsp; {{ thread.latest_message.sent_at|timesince }}</small>
+                </div>
+                <div class="font-weight-bold">
+
+                    <span class="text-danger">!</span>
+                    {{ thread.subject }}
+                </div>
+                <div class="small text-muted text-truncate">
+                    {{ thread.latest_message.content|truncatechars:140 }}
+                </div>
+            </div>
+        </a>
+        {% endfor %}
+
+
+
+
+        <a class="dropdown-item text-center border-top" href="{% url 'pinax_messages:inbox' %}"><strong>View all
+            messages &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </strong></a>
+    </div>
+</li>
+{% endwith %}

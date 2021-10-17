@@ -1,0 +1,14 @@
+<form class="form-inline w-100" method="get" action="">
+    {% csrf_token %}
+    <input class="form-control" id="input2-group2-search" type="text"
+           name="search_value" placeholder="Search" autocomplete="search"
+           value="{{request.search_value}}"><span
+        class="input-group-append">
+                                    <button class="btn   btn-ghost-primary" type="submit">
+                                        <svg class="c-icon">
+                                          <use xlink:href="{{STATIC_URL}}coreui/vendors/coreui/icons/svg/free.svg#cil-search"></use>
+                                        </svg>&nbsp;
+                                    </button>
+
+                                    </span>
+</form>

@@ -23,6 +23,8 @@ from django.http import HttpResponse, HttpResponseForbidden,HttpResponseNotFound
 from django.conf import settings
 
 from django.conf.urls.i18n import i18n_patterns
+from django.views.decorators.cache import cache_control
+from django.contrib.staticfiles.views import serve
 
 #@login_required
 def media_access(request, path):
@@ -60,8 +62,9 @@ urlpatterns = i18n_patterns(
 
     path('activity/', include('the_activity.urls')),
 
-    path('i18n/', include('django.conf.urls.i18n'))
+    path('i18n/', include('django.conf.urls.i18n')),
+    path('sample/', include('SampleApp.urls')),
 
 
-) + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+) + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT,view=cache_control(no_cache=True, must_revalidate=True)(serve))
 

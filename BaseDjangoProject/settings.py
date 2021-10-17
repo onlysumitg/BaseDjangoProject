@@ -11,6 +11,9 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 import os
 
+import mimetypes
+mimetypes.add_type("text/css", ".css", True)
+
 from pathlib import Path
 import mimetypes
 import environ
@@ -48,7 +51,7 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles',
+    #'django.contrib.staticfiles',
     'django.contrib.sites',  # <<<
 
     'crispy_forms',
@@ -70,6 +73,7 @@ INSTALLED_APPS = [
 
     'the_activity',
     'rosetta',
+    'SampleApp',
 ]
 
 
@@ -151,13 +155,6 @@ DATABASE_ROUTERS = [
              ]
 
 # -----------------------------------------------------------------------------------
-#  User auth
-# -----------------------------------------------------------------------------------
-AUTHENTICATION_BACKENDS = (
-    'django.contrib.auth.backends.ModelBackend',
-    'allauth.account.auth_backends.AuthenticationBackend',
-)
-# -----------------------------------------------------------------------------------
 #
 # -----------------------------------------------------------------------------------
 
@@ -223,12 +220,12 @@ STATICFILES_FINDERS = [
 
 # The STATICFILES_DIRS setting should not contain the STATIC_ROOT setting.
 
-STATICFILES_DIRS = [
-    # os.path.join(BASE_DIR, 'static'),
-
-    # os.path.join(BASE_DIR, 'static'),
-    # os.path.join(BASE_DIR, 'tasks')
-]
+# STATICFILES_DIRS = [
+#     # os.path.join(BASE_DIR, 'static'),
+#
+#     # os.path.join(BASE_DIR, 'static'),
+#     # os.path.join(BASE_DIR, 'tasks')
+# ]
 
 # -------------------------------------------------------------
 #  Login

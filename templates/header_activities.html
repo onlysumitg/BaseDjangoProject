@@ -1,0 +1,29 @@
+{% load i18n %}
+{% load static %}
+<li class="c-header-nav-item dropdown d-md-down-none mx-2">
+
+    <a class="c-header-nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
+       aria-expanded="false">
+        <svg class="c-icon">
+            <use xlink:href="{{ STATIC_URL }}coreui/vendors/coreui/icons/svg/free.svg#cil-list-rich"></use>
+        </svg>
+        <!--            <span class="badge badge-pill badge-warning">15</span>-->
+
+    </a>
+    <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg pt-0">
+        <div class="dropdown-header bg-light"><strong>{% trans 'Latest activities' %}</strong></div>
+
+        {% for activity in user_activities %}
+        <a class="dropdown-item d-block" href="#">
+            <div class="  mb-1">{{ activity.change_message }} @ {{ activity.action_time }}</div>
+
+
+        </a>
+        {% endfor %}
+
+
+        <a class="dropdown-item text-center border-top"
+           href="{% url 'the_activity:list_user_activities' %}"><strong>
+            {% trans 'View all activities' %}s</strong></a>
+    </div>
+</li>
