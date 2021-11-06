@@ -11,18 +11,18 @@
         </svg>
     </a>
     <div class="dropdown-menu dropdown-menu-right pt-0">
-        <div class="dropdown-header bg-light py-2"><strong>Account</strong></div>
+        <div class="dropdown-header bg-light py-2"><strong>{% trans "Account" %}</strong></div>
         <a class="dropdown-item" href="#">
             <svg class="c-icon mfe-2">
                 <use xlink:href="{{ STATIC_URL }}coreui/vendors/coreui/icons/svg/free.svg#cil-bell"></use>
             </svg>
-            Updates<span class="badge badge-info mfs-auto">42</span></a>
+            {% trans "Updates" %}<span class="badge badge-info mfs-auto">42</span></a>
         {% with user|unread_thread_count as unread_count %}
         <a class="dropdown-item" href="{% url 'pinax_messages:inbox' %}">
             <svg class="c-icon mfe-2">
                 <use xlink:href="{{ STATIC_URL }}coreui/vendors/coreui/icons/svg/free.svg#cil-envelope-open"></use>
             </svg>
-            Messages
+            {% trans "Messages" %}
 
             <span class="badge badge-success mfs-auto">{{ unread_count }}</span>
 
@@ -34,17 +34,17 @@
             <svg class="c-icon mfe-2">
                 <use xlink:href="{{ STATIC_URL }}coreui/vendors/coreui/icons/svg/free.svg#cil-task"></use>
             </svg>
-            Tasks<span class="badge badge-danger mfs-auto">{{ pending_task_count }} </span></a>
+            {% trans "Tasks" %}<span class="badge badge-danger mfs-auto">{{ pending_task_count }} </span></a>
 
 
         <a class="dropdown-item" href="#">
             <svg class="c-icon mfe-2">
                 <use xlink:href="{{ STATIC_URL }}coreui/vendors/coreui/icons/svg/free.svg#cil-comment-square"></use>
             </svg>
-            Comments<span class="badge badge-warning mfs-auto">42</span></a>
+            {% trans "Comments" %}<span class="badge badge-warning mfs-auto">42</span></a>
 
         <div class="dropdown-header bg-light py-2">
-            <strong>Settings</strong>
+            <strong>{% trans "Settings" %}</strong>
         </div>
 
 

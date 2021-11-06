@@ -1,7 +1,8 @@
+{% load i18n %}
 <form class="form-inline w-100" method="get" action="">
     {% csrf_token %}
     <input class="form-control" id="input2-group2-search" type="text"
-           name="search_value" placeholder="Search" autocomplete="search"
+           name="search_value" placeholder="{% trans 'Search' %}" autocomplete="search"
            value="{{request.search_value}}"><span
         class="input-group-append">
                                     <button class="btn   btn-ghost-primary" type="submit">

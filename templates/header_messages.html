@@ -18,7 +18,7 @@
     </a>
 
     <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg pt-0">
-        <div class="dropdown-header bg-light"><strong>You have {{unread_count}} new messages</strong></div>
+        <div class="dropdown-header bg-light"><strong>{% blocktrans with unread_count as unread_total %}You have {{unread_total}} new messages {% endblocktrans %}</strong></div>
 
         {% for thread in unread_threads %}
 
@@ -49,8 +49,8 @@
 
 
 
-        <a class="dropdown-item text-center border-top" href="{% url 'pinax_messages:inbox' %}"><strong>View all
-            messages &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </strong></a>
+        <a class="dropdown-item text-center border-top" href="{% url 'pinax_messages:inbox' %}"><strong>
+            {% trans "View all messages" %} &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </strong></a>
     </div>
 </li>
 {% endwith %}

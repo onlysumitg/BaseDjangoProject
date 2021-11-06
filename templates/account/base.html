@@ -10,9 +10,9 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <meta name="description" content="Paysa.plus">
+    <meta name="description" content="{{ app_name }}">
     <meta name="author" content="{{app_name}}">
-    <meta name="keyword" content="Bootstrap,Admin,Template,Open,Source,jQuery,CSS,HTML,RWD,Dashboard">
+    <meta name="keyword" content="">
     <title>{% block head_title %}{{ app_name }}{% endblock %}</title>
     <!-- Main styles for this application-->
     <!--    <link href="css/style.css" rel="stylesheet">-->
@@ -46,7 +46,7 @@
         <div class="col-md-8">
             <footer class="c-footer">
                 <div><a href="">{{app_name}}</a> © 2020.</div>
-                <div class="mfs-auto">Powered by&nbsp;<a href="https://{{powered_by}}">{{powered_by}}</a></div>
+                <div class="mfs-auto">{% trans 'Powered by' %}&nbsp;<a href="https://{{powered_by}}">{{powered_by}}</a></div>
             </footer>
         </div>
     </div>

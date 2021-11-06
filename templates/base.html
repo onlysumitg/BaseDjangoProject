@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <meta name="description" content="{{ app_name }}">
     <meta name="author" content="{{app_name}}">
-    <meta name="keyword" content="Paysa, bill payment">
+    <meta name="keyword" content="{{ app_name }}">
     <title>{% block head_title %}{{ app_name }}{% endblock %}</title>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
 
@@ -53,7 +53,7 @@
     {% block footer %}
     <footer class="c-footer">
         <div><a href="">{{app_name}}</a> © 2020.</div>
-        <div class="mfs-auto">Powered by&nbsp;<a href="http://{{powered_by}}">{{powered_by}}</a></div>
+        <div class="mfs-auto">{% trans "Powered by" %}&nbsp;<a href="http://{{powered_by}}">{{powered_by}}</a></div>
     </footer>
     {% endblock footer %}
 </div>

@@ -15,7 +15,7 @@
     <meta name="description" content="">
     <meta name="author" content="{{app_name}}">
     <meta name="keyword" content="">
-    <title>CoreUI Pro Bootstrap Admin Template</title>
+    <title>{{app_name}} 500</title>
     <!-- Main styles for this application-->
     <link href="{{ STATIC_URL }}coreui/css/style.css" rel="stylesheet">
   </head>
@@ -25,8 +25,8 @@
         <div class="col-md-6">
           <div class="clearfix">
             <h1 class="float-left display-3 mr-4">500</h1>
-            <h4 class="pt-3">Houston, we have a problem!</h4>
-            <p class="text-muted">The page you are looking for is temporarily unavailable.</p>
+            <h4 class="pt-3">{% trans "Houston, we have a problem!" %}</h4>
+            <p class="text-muted">{% trans "The page you are looking for is temporarily unavailable." %}</p>
           </div>
           <div class="input-prepend input-group">
             <div class="input-group-prepend"><span class="input-group-text">

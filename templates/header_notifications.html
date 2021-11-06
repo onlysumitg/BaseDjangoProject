@@ -1,3 +1,4 @@
+{% load i18n %}
 <li class="c-header-nav-item dropdown d-md-down-none mx-2"><a class="c-header-nav-link" data-toggle="dropdown"
                                                               href="#" role="button" aria-haspopup="true"
                                                               aria-expanded="false">
@@ -6,7 +7,7 @@
     </svg>
     <span class="badge badge-pill badge-danger">5</span></a>
     <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg pt-0">
-        <div class="dropdown-header bg-light"><strong>You have 5 notifications</strong></div>
+        <div class="dropdown-header bg-light"><strong>{% blocktrans %}You have 5 notifications{% endblocktrans %}</strong></div>
         <a class="dropdown-item" href="#">
             <svg class="c-icon mfe-2 text-success">
                 <use xlink:href="{{ STATIC_URL }}coreui/vendors/coreui/icons/svg/free.svg#cil-user-follow"></use>

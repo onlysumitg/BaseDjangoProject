@@ -255,7 +255,7 @@ OTP_ENTRY_URL = '/user/twofactor/'
 # -------------------------------------------------------------
 #
 # -------------------------------------------------------------
-JWT_SECRET = database.get_env_variable('JWT_SECRET')
+JWT_SECRET = database.get_env_variable('JWT_SECRET', default="ENTER_TOKEN", required=False)
 
 # -------------------------------------------------------------
 # django-allauth registraion settings
@@ -294,8 +294,8 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = database.get_env_variable('EMAIL_HOST', default='smtp.gmail.com')
 EMAIL_USE_TLS = database.get_env_variable('EMAIL_USE_TLS', default=True)
 EMAIL_PORT = database.get_env_variable('EMAIL_PORT', default=587)
-EMAIL_HOST_USER = database.get_env_variable('EMAIL_HOST_USER', default='onlysumitg@gmail.com')
-EMAIL_HOST_PASSWORD = database.get_env_variable('EMAIL_HOST_PASSWORD', default="")
+EMAIL_HOST_USER = database.get_env_variable('EMAIL_HOST_USER', default='abc@example.comsss')
+EMAIL_HOST_PASSWORD = database.get_env_variable('EMAIL_HOST_PASSWORD', default="", required=False)
 
 # -------------------------------------------------------------
 #  for encrypted fields
