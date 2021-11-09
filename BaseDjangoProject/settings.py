@@ -103,6 +103,8 @@ MIDDLEWARE = [
 
     'the_activity.middleware.ActivityMiddleware',
     'the_system.middleware.TheSystemMiddleware',
+    'the_system.middleware.CurrentUserMiddleware',
+
 
     'whitenoise.middleware.WhiteNoiseMiddleware',
 

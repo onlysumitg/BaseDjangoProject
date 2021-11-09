@@ -1,8 +1,19 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
+from django.conf import settings
 
+from .middleware import get_current_user
 
 # Create your models here.
+
+class BaseModel(models.Model):
+    created_by = models.ForeignKey(settings.AUTH_USER_MODEL, default=get_current_user, on_delete=models.DO_NOTHING, related_name="%(app_label)s_%(class)s_created")
+    created_date = models.DateTimeField(auto_now_add=True)
+    modified_date = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        abstract = True
+
 
 class SystemConfig(models.Model):
     class Config(models.TextChoices):
