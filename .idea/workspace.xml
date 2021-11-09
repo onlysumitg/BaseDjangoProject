@@ -1,14 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7db40a2d-4691-43de-acda-844b3930bc45" name="Default Changelist" comment="backup 11062021">
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="7db40a2d-4691-43de-acda-844b3930bc45" name="Default Changelist" comment="current user middleware">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BaseDjangoProject/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/BaseDjangoProject/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/the_system/middleware.py" beforeDir="false" afterPath="$PROJECT_DIR$/the_system/middleware.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/the_system/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/the_system/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/the_system/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/the_system/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/the_system/apps.py" beforeDir="false" afterPath="$PROJECT_DIR$/the_system/apps.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -152,7 +148,7 @@
       <workItem from="1634355831253" duration="19243000" />
       <workItem from="1634522739461" duration="2098000" />
       <workItem from="1634667186751" duration="3140000" />
-      <workItem from="1636225202008" duration="7135000" />
+      <workItem from="1636225202008" duration="7795000" />
     </task>
     <task id="LOCAL-00001" summary="created rename_project.py">
       <created>1634404789892</created>
@@ -196,7 +192,14 @@
       <option name="project" value="LOCAL" />
       <updated>1636225260405</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="current user middleware">
+      <created>1636475373291</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1636475373291</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -218,7 +221,8 @@
     <MESSAGE value="created rename_project.py" />
     <MESSAGE value="Restored project name" />
     <MESSAGE value="backup 11062021" />
-    <option name="LAST_COMMIT_MESSAGE" value="backup 11062021" />
+    <MESSAGE value="current user middleware" />
+    <option name="LAST_COMMIT_MESSAGE" value="current user middleware" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

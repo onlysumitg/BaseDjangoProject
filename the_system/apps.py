@@ -6,7 +6,8 @@ class TheSystemConfig(AppConfig):
     name = 'the_system'
 
     def ready(self):
-        pass
+        print("Starting the server >>>>>>> ")
+
         # from .models import SystemConfig
         # from django.contrib import admin
         # app_name = SystemConfig.get(SystemConfig.Config.APP_NAME.name)
