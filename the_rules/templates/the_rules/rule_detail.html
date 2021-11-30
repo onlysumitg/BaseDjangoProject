@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+
+{% load i18n %}
+
+{% block head_title %}{% trans "Rule" %} {{ object.name}}{% endblock %}
+
+{% block content %}
+{% load crispy_forms_tags %}
+{% load verbose_names %}
+
+
+<div class="container-fluid">
+   <div class="row m-2">
+      <div class="col">
+         <div class="card">
+            <div class="card-header"><Strong> {% trans "Rule" %} : {{ object.name}}  
+              </Strong> 
+              
+              <a href = {% url 'the_rules:update' pk=object.pk %} url 'the_rules:add' %}" class="btn btn-primary float-right">{% trans 'Update' %}</a> 
+              </div>
+            <div class="card-body">
+
+               <div class="row m-2">
+                  <div class="col">
+                     <strong> {% get_verbose_field_name object "name" %} </strong> :
+                     {{ object.name}}
+                  </div>
+
+                         <div class="col">
+                     <strong> {% get_verbose_field_name object "priority" %} </strong> :
+                     {{ object.priority}}
+                  </div>
+
+              
+             
+               </div>
+
+ <br />
+                              <div class="row m-2">
+                  
+
+                  <div class="col">
+                     <strong> {% get_verbose_field_name object "description" %} </strong> :
+                     {{ object.description}}
+                  </div>
+             
+               </div>
+
+              
+
+        
+
+            </div>
+         </div>
+      </div>
+
+
+   </div>
+
+   
+ 
+ 
+   
+</div>
+       {% include "the_rules/condition_list.html" with rule=object %}
+ 
+
+{% endblock %}
+
+ 

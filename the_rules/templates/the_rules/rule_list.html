@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+
+{% load i18n %}
+{% load static %}
+{% block head_title %}{% trans "Rules" %}{% endblock %}
+
+{% block content %}
+{% load crispy_forms_tags %}
+
+
+<div class="container-fluid">
+    <!-- LOGIN -->
+    <div class="row m-2">
+        <div class="col">
+            <div class="card">
+                <div class="card-header"><Strong>{% trans 'Rules' %}</Strong> <a href = "{% url 'the_rules:add' %}" class="btn btn-primary float-right">{% trans '+ Add new' %}</a> </div>
+                <div class="card-body">
+
+                    
+                                    <table class="table table-responsive-sm table-hover table-outline mb-0 w-100 d-block d-md-table">
+                        <thead class="thead-light">
+                        <tr>
+                            <th  class=" ">{% trans "Name" %}</th>
+                            <th  class=" ">{% trans "Priority" %}</th>
+                            <th  class=" ">{% trans "Description" %}</th>
+                    
+                            <th  class="text-center">{% trans "Options" %}</th>
+
+
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for rule in object_list %}
+                        <tr>
+                          
+                            <td  class=" ">
+                                {{ rule.name }}
+                            </td>
+<td  class=" ">
+                                {{ rule.priority }}
+                            </td>
+                             
+                            <td  class=" ">
+                                {{ rule.description }}
+
+                            </td >
+                             
+
+ 
+                            <td  class="text-center">
+
+                                <a href = "{% url 'the_rules:detail' pk=rule.pk %}" class="">
+                                    Details</a> | 
+
+                                <a href = "{% url 'the_rules:update' pk=rule.pk %}" class="">
+                                    Update</a>
+                            </td>
+                        </tr>
+                        {% empty %}
+                        <tr >
+
+                            <td  class="text-center" colspan="4"><p class="text-center">{% trans 'No Record Found' %}</p></td>
+
+                        </tr>
+
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                    {% include "pagination.html" with paginator=page_obj %}
+
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+{% endblock %}
+ 

@@ -30,8 +30,15 @@ requests = "*"
 xlrd = "==1.2.0"
 django-iseries = {git = "https://github.com/onlysumitg/django-pyodbc-iseries.git"}
 django-rosetta = "*"
+djangorestframework-simplejwt = "*"
+celery = "*"
+redis = "*"
+django-celery-beat = "*"
+django-celery-results = "*"
+business-rules = "*"
 
 [dev-packages]
+autopep8 = "*"
 
 [requires]
-python_version = "3.9"
+python_version = "3.8"

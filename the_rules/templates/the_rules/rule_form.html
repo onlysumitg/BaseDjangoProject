@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% load i18n %}
+
+{% block head_title %}{% trans "Rules" %}{% endblock %}
+
+{% block content %}
+{% load crispy_forms_tags %}
+ 
+
+
+<div class="container-fluid">
+   <div class="row m-2">
+      <div class="col">
+         <div class="card">
+            <div class="card-header"><Strong> {% trans "Add new Rule" %}
+                  </Strong> </div>
+            <div class="card-body">
+               <form method="post">
+               <!-- Security token -->
+               {% csrf_token %}
+
+               <!-- Using the formset -->
+               {{ form|crispy }}
+
+               <input class='btn btn-primary' type="submit" value="Submit">
+               <form>
+
+
+            </div>
+         </div>
+      </div>
+
+
+   </div>
+
+
+</div>
+
+{% endblock %}
+
+ 

@@ -1,0 +1,52 @@
+ {% load i18n %}
+ {% load static %}
+
+
+ 
+ {% load crispy_forms_tags %}
+
+
+ 
+                     <table class="table table-responsive-sm table-hover table-outline mb-0 w-100 d-block d-md-table">
+                         <thead class="thead-light">
+                             <tr>
+                                 <th class="text-center">{% trans "order" %}</th>
+                                 <th class="text-center">{% trans "Name" %}</th>
+                                 <th>{% trans "When" %}</th>
+                                 <th>{% trans "Then use" %}</th>
+                                 <th class="text-center">{% trans "Active" %}</th>
+                                 <th class="text-center">{% trans "Options" %}</th>
+                             </tr>
+                         </thead>
+                         <tbody>
+                             {% for condition in conditions %}
+                             <tr> 
+                                <td>{{ condition.sequence }}</td>
+                                 <td>{{ condition.name }}</td>
+                                 <td>{{ condition.readable_text }}</td>
+                                 <td>{{ condition.gateway }}</td>
+                                 <td>{{ condition.is_active }}</td>
+
+
+
+                                 <td>
+
+                                     <a href="{% url 'the_rules:update_condition' rule_pk=rule.pk pk=condition.pk %}"
+                                         class="">
+                                         Update</a>
+
+                                 </td>
+                             </tr>
+                             {% empty %}
+                             <tr>
+
+                                 <td class="text-center" colspan="5">
+                                     <p class="text-center">{% trans 'No Record Found' %}</p>
+                                 </td>
+
+                             </tr>
+
+                             {% endfor %}
+                         </tbody>
+                     </table>
+ 

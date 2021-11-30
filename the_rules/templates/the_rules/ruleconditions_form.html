@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+
+{% load i18n %}
+
+{% block head_title %}{% trans "Customers" %}{% endblock %}
+
+{% block content %}
+{% load crispy_forms_tags %}
+
+
+
+<div class="container-fluid">
+   <div class="row m-2">
+      <div class="col">
+         <div class="card">
+            <div class="card-header"><Strong>
+                  {% if condition%}
+                  {% trans "Update condition" %} "{{condition.name}}"
+                  {% else %}
+                  {% trans "Add new condition" %}
+                  {% endif %}
+               </Strong> </div>
+            <div class="card-body">
+
+
+
+               <form method="post">
+                  <!-- Security token -->
+                  {% csrf_token %}
+
+                  <!-- Using the formset -->
+                  {{ form|crispy }}
+
+
+
+              
+                  {% if condition%}
+                  <div class="card">
+                     <div class="card-header"><Strong>{% trans "Current condition" %} </strong></div>
+                     <div class="card-body">
+                        <h3> </h3>
+                        <h4>If: </h4> {{condition.readable_text}}
+                        <br /> <br />
+                        <h4>Then use: </h4> {{condition.gateway}}
+                     </div>
+                     </div>
+
+                     {% endif %}
+
+
+                     <div class="card">
+                        <div class="card-header"><Strong>{% trans "New condition" %} </strong></div>
+                        <div class="card-body">
+                           <div id="conditions"></div>
+
+                           <h3>Then:</h3>
+                           <div id="actions"></div>
+                        </div>
+                        </div>
+                        <div>
+
+
+                       
+                           {% if condition%}
+                           <button class='btn btn-primary' id="submit3" type="submit"> Submit</button>
+                           <button class='btn' id="submit" type="submit">Update condition and Submit</button>
+
+                           {% else %}
+                           <button class='btn btn-primary' id="submit" type="submit">Submit</button>
+                           {% endif %}
+                           <form>
+
+
+                        </div>
+                     </div>
+                  </div>
+
+
+            </div>
+
+
+
+            {% include 'the_rules/condition_builder.html' with rules=rules available_gateways=available_gateways %}
+
+
+            {% endblock %}

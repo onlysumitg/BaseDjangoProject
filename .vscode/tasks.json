@@ -1,0 +1,71 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+      {
+        "type": "shell",
+        "command": "${command:python.interpreterPath}",
+        "args": [
+          "manage.py",
+          "makemigrations"
+        ],
+        "isBackground": true,
+        "options": {
+          "cwd": "${workspaceFolder}"
+        },
+        "label": "Make Migrations"
+      },
+      {
+        "type": "shell",
+        "command": "${command:python.interpreterPath}",
+        "args": [
+          "manage.py",
+          "migrate"
+        ],
+        "isBackground": true,
+        "options": {
+          "cwd": "${workspaceFolder}"
+        },
+        "label": "migrate_1",
+        "dependsOn": [
+          "Make Migrations"
+        ]
+      },
+      {
+        "type": "shell",
+        "command": "${command:python.interpreterPath}",
+        "args": [
+          "manage.py",
+          "migrate",
+          "--database=pci"
+        ],
+        "isBackground": true,
+        "options": {
+          "cwd": "${workspaceFolder}"
+        },
+        "label": "migrate",
+        "dependsOn": [
+          "migrate_1"
+        ],
+        "problemMatcher": []
+      }
+      ,
+      {
+        "type": "shell",
+        "command": "${command:python.interpreterPath}",
+        "args": [
+          "manage.py",
+          "runserver",
+         
+        ],
+        "isBackground": false,
+        "options": {
+          "cwd": "${workspaceFolder}"
+        },
+        "label": "runserver",
+        "dependsOn": [
+          "migrate"
+        ],
+        "problemMatcher": []
+      }
+    ]
+  }

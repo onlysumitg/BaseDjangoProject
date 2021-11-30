@@ -76,3 +76,25 @@ def ibmi():
             "conn_options": {'autocommit': True},
         }
     }
+
+
+def pci_db():
+    service_name = os.getenv('PCI_DATABASE_SERVICE_NAME', '').upper().replace('-', '_')
+    if service_name:
+        engine = engines.get(os.getenv('PCI_DATABASE_ENGINE'), engines['sqlite'])
+    else:
+        engine = engines['sqlite']
+
+    name = os.getenv('PCI_DATABASE_NAME')
+    if not name and engine == engines['sqlite']:
+        name = os.path.join(settings.BASE_DIR, 'pci_db.sqlite3')
+
+    return {
+        'ENGINE': engine,
+        'NAME': name,
+        'USER': os.getenv('PCI_DATABASE_USER'),
+        'PASSWORD': os.getenv('PCI_DATABASE_PASSWORD'),
+        'HOST': os.getenv('{}_SERVICE_HOST'.format(service_name)),
+        'PORT': os.getenv('{}_SERVICE_PORT'.format(service_name)),
+        'SUPPORTS_TRANSACTIONS': True,
+    }
