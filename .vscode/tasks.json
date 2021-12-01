@@ -67,5 +67,28 @@
         ],
         "problemMatcher": []
       }
+
+
+      ,
+      {
+        "type": "shell",
+        "command": "${command:python.interpreterPath}",
+        "args": [
+          "celery",
+          "-A" , "BaseDjangoProject", "worker" ,"-l", "info" , "-Ofair" ,"--pool=solo", "-Q" ,"useractivity"
+         
+        ],
+        "isBackground": false,
+        "options": {
+          "cwd": "${workspaceFolder}"
+        },
+        "label": "start_celery",
+    
+        "problemMatcher": []
+      }
+
+
+
+        
     ]
   }

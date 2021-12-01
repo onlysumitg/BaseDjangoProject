@@ -30,3 +30,17 @@
 
 - python manage.py collectstatic
 
+
+
+tasks -> https://github.com/codingforentrepreneurs/Guides/blob/master/all/Celery_Redis_with_Django.md
+
+
+to test celery
+
+Go to pipenv shell
+
+celery -A PayBridge worker -l info --loglevel=DEBUG --without-gossip --without-mingle --without-heartbeat -Ofair --pool=solo
+
+
+
+celery -A BaseDjangoProject worker -l info  -Ofair --pool=solo -Q useractivity

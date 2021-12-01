@@ -5,9 +5,9 @@ from celery import Celery
 
 # set the default Django settings module for the 'celery' program. 
 # must be same as wsgi.py
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'PayBridge.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'BaseDjangoProject.settings')
 
-app = Celery('paybridge')
+app = Celery('BaseDjangoProject')
  
 
 

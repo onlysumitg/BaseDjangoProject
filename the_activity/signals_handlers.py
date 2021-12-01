@@ -14,6 +14,7 @@ from .models import UserActivity
 
 from .signals import create_log_entry
 
+from .tasks import async_create_log_entry_logger
 '''
 https://docs.djangoproject.com/en/dev/ref/request-response/#django.http.HttpRequest.META
 
@@ -63,21 +64,23 @@ def create_log_entry_logger(request: Any = None, user_to_use: Model = None, targ
         path = request.META['HTTP_REFERER']
     else:
         user = user_to_use
+        ip_address =""
+        user_agent =""
+        path = ""
 
-    # if create_log_entry.target:
-    #     content_type = ContentType.objects.get_for_model(log_entry_data.target)
-    #     object_id = log_entry_data.target.id
+    kwargs_local = {
+         "user_id" : user.id if user else None, 
+         "ip_address":ip_address,
+         "user_agent": user_agent,
+         "path": path,
+         "target":target,
+         "message": message
+    }
 
-    if message:
-        user_activity = UserActivity(user=user,
-                                     target=target,
-                                     change_message=_(message),
-                                     ip_address=ip_address,
-                                     user_agent=user_agent,
-                                     path=path
-                                     )
+    final_kwargs = {**kwargs_local, **kwargs}
 
-        user_activity.save()
+    print(" final_kwargs " , final_kwargs)
+    async_create_log_entry_logger.apply_async(kwargs= final_kwargs)
 
 
 '''
